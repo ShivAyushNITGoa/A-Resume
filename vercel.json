@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/resume builder/$1" }
+  ],
+  "buildCommand": "cd resume\\ builder && npm run build",
+  "outputDirectory": "resume builder/.next",
+  "installCommand": "cd resume\\ builder && npm install"
+} 
