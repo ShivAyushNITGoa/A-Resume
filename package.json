@@ -1,0 +1,20 @@
+{
+  "name": "resume-builder-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Resume builder application - root project",
+  "scripts": {
+    "dev": "cd \"resume builder\" && npm run dev",
+    "build": "cd \"resume builder\" && npm run build",
+    "start": "cd \"resume builder\" && npm run start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "workspaces": [
+    "resume builder"
+  ],
+  "dependencies": {
+    "next": "^14.0.4"
+  }
+} 
