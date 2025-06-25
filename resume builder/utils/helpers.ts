@@ -36,6 +36,28 @@ export const getInitials = (name: string): string => {
 };
 
 /**
+ * Gets the correct asset path based on whether the app is running in 
+ * production (GitHub Pages) or development
+ * 
+ * @param path - The relative path to the asset (e.g., "/images/logo.svg")
+ * @returns The correct path for the current environment
+ */
+export const getAssetPath = (path: string): string => {
+  if (!path) return '';
+  
+  // Strip leading slash if present
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  
+  // Add the base path for production (GitHub Pages)
+  if (process.env.NODE_ENV === 'production') {
+    return `/new-resume/${cleanPath}`;
+  }
+  
+  // Return the original path with leading slash for development
+  return `/${cleanPath}`;
+};
+
+/**
  * Truncates text to a specific length and adds ellipsis if needed
  * 
  * @param text - The text to truncate
@@ -101,4 +123,4 @@ export const calculateDuration = (startDate: string, endDate?: string): string =
     console.error('Error calculating duration:', error);
     return '';
   }
-}; 
+};

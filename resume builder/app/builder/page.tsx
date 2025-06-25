@@ -11,8 +11,9 @@ import ExperienceForm from '@/components/forms/ExperienceForm';
 import EducationForm from '@/components/forms/EducationForm';
 import SkillsForm from '@/components/forms/SkillsForm';
 import AchievementsForm from '@/components/forms/AchievementsForm';
-import { ResumeData, PersonalInfo, Experience, Education, Project, Certification } from '@/utils/types';
+import { ResumeData, PersonalInfo, Experience, Education, Project, Certification, Skills } from '@/utils/types';
 import { templates } from '@/templates';
+import { getAssetPath } from '@/utils/helpers';
 
 const tabs = [
   { id: 'template', label: 'Choose Template' },
@@ -75,37 +76,20 @@ const defaultResumeData: ResumeData = {
     issuer: '',
     date: '',
   }],
+  achievements: [{
+    date: '',
+    description: '',
+  }],
 };
-
-// Create a custom extended type to include achievements
-interface ExtendedResumeData extends ResumeData {
-  achievements?: {
-    date: string;
-    description: string;
-  }[];
-}
 
 export default function Builder() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('template');
-  const [resumeData, setResumeData] = useState<ExtendedResumeData>(defaultResumeData);
+  const [resumeData, setResumeData] = useState<ResumeData>(defaultResumeData);
   const [selectedTemplate, setSelectedTemplate] = useState(templates[0].id);
   const [backgroundColor, setBackgroundColor] = useState('#9c4d61');
 
-  // Initialize achievements using useEffect to avoid state updates during render
-  useEffect(() => {
-    if (!resumeData.achievements) {
-      setResumeData(prev => ({
-        ...prev,
-        achievements: [{
-          date: '',
-          description: '',
-        }]
-      }));
-    }
-  }, []);
-
-  const updateResumeData = (section: keyof ExtendedResumeData, data: any) => {
+  const updateResumeData = (section: keyof ResumeData, data: any) => {
     setResumeData(prev => ({
       ...prev,
       [section]: data
@@ -206,7 +190,7 @@ export default function Builder() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-3">
             <Image 
-              src="/images/logo.svg" 
+              src={getAssetPath('images/logo.svg')} 
               alt="GDEVELOPERS Logo" 
               className="h-10 w-auto"
               width={40}
@@ -282,7 +266,7 @@ export default function Builder() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-3">
             <Image 
-              src="/images/logo.svg" 
+              src={getAssetPath('images/logo.svg')} 
               alt="GDEVELOPERS Logo" 
               className="h-12 w-auto"
               width={48}

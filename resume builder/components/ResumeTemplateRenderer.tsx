@@ -164,13 +164,13 @@ const ResumeTemplateRenderer: React.FC<ResumeTemplateRendererProps> = ({
   // Render the appropriate template based on selection
   switch (selectedTemplate) {
     case 'minimalist':
-      return <MinimalistTemplate resumeData={adaptedData} />;
+      return <MinimalistTemplate data={adaptedData} color={backgroundColor} />;
     case 'modern':
-      return <ModernTemplate resumeData={adaptedData} />;
+      return <ModernTemplate data={adaptedData} color={backgroundColor} />;
     case 'creative':
-      return <CreativeTemplate resumeData={adaptedData} />;
+      return <CreativeTemplate data={adaptedData} color={backgroundColor} />;
     case 'classic':
-      return <ClassicTemplate resumeData={adaptedData} />;
+      return <ClassicTemplate data={adaptedData} color={backgroundColor} />;
     case 'consultant':
       return <ConsultantTemplate data={adaptedData} backgroundColor={backgroundColor} />;
     case 'global-executive':
@@ -196,7 +196,7 @@ const ResumeTemplateRenderer: React.FC<ResumeTemplateRendererProps> = ({
         return <DynamicTemplate data={adaptedData} template={templateObj} />;
       }
       // Fallback to minimalist
-      return <MinimalistTemplate resumeData={adaptedData} />;
+      return <MinimalistTemplate data={adaptedData} color={backgroundColor} />;
   }
 };
 

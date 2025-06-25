@@ -112,12 +112,17 @@ const ChronologicalTemplate: React.FC<ChronologicalTemplateProps> = ({ data }) =
       )}
       
       {/* Skills */}
-      {skills && skills.length > 0 && (
+      {skills && (
         <div className="mb-6">
           <h2 className="text-lg font-bold text-gray-800 mb-2">SKILLS</h2>
           <div className="flex flex-wrap gap-2">
-            {skills.map((skill, index) => (
-              <span key={index} className="text-sm bg-gray-100 px-3 py-1 rounded text-gray-700">
+            {skills.hard.map((skill, index) => (
+              <span key={`hard-${index}`} className="bg-gray-100 rounded px-2 py-1 text-sm">
+                {skill}
+              </span>
+            ))}
+            {skills.soft.map((skill, index) => (
+              <span key={`soft-${index}`} className="bg-gray-100 rounded px-2 py-1 text-sm">
                 {skill}
               </span>
             ))}

@@ -1,10 +1,10 @@
 "use client";
 
-import { ResumeData } from '@/utils/types';
+import { ResumeData, Achievement } from '@/utils/types';
 
 interface AchievementsFormProps {
-  data: ResumeData['achievements'];
-  updateData: (data: ResumeData['achievements']) => void;
+  data: Achievement[];
+  updateData: (data: Achievement[]) => void;
 }
 
 const AchievementsForm: React.FC<AchievementsFormProps> = ({ data, updateData }) => {

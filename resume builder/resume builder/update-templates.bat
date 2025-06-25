@@ -1,8 +1,0 @@
-copy "public\images\logo.svg" "public\templates\creative.png"
-copy "public\images\logo.svg" "public\templates\executive.png"
-copy "public\images\logo.svg" "public\templates\techminimal.png"
-copy "public\images\logo.svg" "public\templates\twocolumn.png"
-copy "public\images\logo.svg" "public\templates\multipage.png"
-copy "public\images\logo.svg" "public\templates\academic.png"
-copy "public\images\logo.svg" "public\templates\chronological.png"
-copy "public\images\logo.svg" "public\templates\corporate.png" 

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from 'react';
-import { ResumeData } from '@/utils/types';
+import { ResumeData, Experience } from '@/utils/types';
 
 interface ExperienceFormProps {
-  data: ResumeData['experience'];
-  updateData: (data: ResumeData['experience']) => void;
+  data: Experience[];
+  updateData: (data: Experience[]) => void;
 }
 
 const ExperienceForm: React.FC<ExperienceFormProps> = ({ data, updateData }) => {
@@ -15,9 +15,12 @@ const ExperienceForm: React.FC<ExperienceFormProps> = ({ data, updateData }) => 
       {
         company: '',
         position: '',
+        location: '',
         startDate: '',
         endDate: '',
+        current: false,
         responsibilities: [''],
+        description: '',
       },
     ]);
   };
@@ -102,6 +105,21 @@ const ExperienceForm: React.FC<ExperienceFormProps> = ({ data, updateData }) => 
                 required
                 className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700"
                 placeholder="Senior Financial Analyst"
+              />
+            </div>
+            
+            <div>
+              <label htmlFor={`location-${expIndex}`} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                Location *
+              </label>
+              <input
+                type="text"
+                id={`location-${expIndex}`}
+                value={experience.location}
+                onChange={(e) => updateExperienceItem(expIndex, 'location', e.target.value)}
+                required
+                className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700"
+                placeholder="New York, NY"
               />
             </div>
             

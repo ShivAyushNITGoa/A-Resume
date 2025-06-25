@@ -18,8 +18,11 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
 }) => {
   const [filter, setFilter] = useState('all');
   
-  // Get template categories
-  const categories = ['all', ...new Set(templates.flatMap(t => t.features || []))];
+  // Get template categories with Array.from to fix Set iteration issues
+  const allFeatures = templates.flatMap(t => t.features || []);
+  // Convert to array before spreading to ensure compatibility
+  const uniqueFeatures = Array.from(new Set(allFeatures));
+  const categories = ['all', ...uniqueFeatures];
   
   // Filter templates
   const filteredTemplates = filter === 'all' 

@@ -49,14 +49,14 @@ const CreativeTemplate: React.FC<CreativeTemplateProps> = ({ data }) => {
       )}
       
       {/* Skills */}
-      {skills && skills.length > 0 && (
+      {skills && (
         <div className="mb-6">
           <div className="flex items-center mb-2">
             <h2 className="text-lg font-bold text-purple-700">SKILLS</h2>
             <div className="flex-grow ml-3 h-px bg-purple-300"></div>
           </div>
           <div className="flex flex-wrap gap-2">
-            {skills.map((skill, index) => (
+            {skills.hard.map((skill, index) => (
               <span 
                 key={index} 
                 className="px-3 py-1 text-sm bg-purple-100 text-purple-800 rounded-full"

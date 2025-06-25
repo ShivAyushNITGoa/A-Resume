@@ -45,13 +45,13 @@ const TechMinimalTemplate: React.FC<TechMinimalTemplateProps> = ({ data }) => {
       )}
       
       {/* Skills */}
-      {skills && skills.length > 0 && (
+      {skills && (
         <div className="mb-6">
           <h2 className="text-lg font-bold text-gray-800 border-b border-gray-300 pb-1 mb-2">
             $ ls skills/
           </h2>
           <div className="flex flex-wrap gap-2">
-            {skills.map((skill, index) => (
+            {skills.hard.map((skill, index) => (
               <div 
                 key={index} 
                 className="px-2 py-1 text-xs bg-gray-100 text-gray-800 rounded border border-gray-200"

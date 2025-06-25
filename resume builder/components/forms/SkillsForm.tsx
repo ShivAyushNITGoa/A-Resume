@@ -1,10 +1,10 @@
 "use client";
 
-import { ResumeData } from '@/utils/types';
+import { Skills } from '@/utils/types';
 
 interface SkillsFormProps {
-  data: ResumeData['skills'];
-  updateData: (data: ResumeData['skills']) => void;
+  data: Skills;
+  updateData: (data: Skills) => void;
 }
 
 const SkillsForm: React.FC<SkillsFormProps> = ({ data, updateData }) => {

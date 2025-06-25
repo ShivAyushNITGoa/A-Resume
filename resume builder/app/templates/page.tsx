@@ -1,8 +1,10 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ThemeToggle from '@/components/theme-toggle';
 import { templates } from '@/templates';
+import { getAssetPath } from '@/utils/helpers';
 
 export default function TemplatesPage() {
   return (
@@ -10,10 +12,12 @@ export default function TemplatesPage() {
       <header className="border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-3">
-            <img 
-              src="/images/logo.svg" 
+            <Image 
+              src={getAssetPath('images/logo.svg')} 
               alt="GDEVELOPERS Logo" 
               className="h-10 w-auto"
+              width={40}
+              height={40}
             />
             <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
               Resume Builder
@@ -93,10 +97,12 @@ export default function TemplatesPage() {
                             ))}
                           </div>
                         )}
-                        <img 
-                          src="/images/logo.svg" 
+                        <Image 
+                          src={getAssetPath('images/logo.svg')} 
                           alt="GDEVELOPERS Logo" 
                           className="h-16 w-auto mx-auto mt-4 opacity-50"
+                          width={64}
+                          height={64}
                         />
                       </div>
                     </div>
@@ -148,10 +154,12 @@ export default function TemplatesPage() {
       <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-3">
-            <img 
-              src="/images/logo.svg" 
+            <Image 
+              src={getAssetPath('images/logo.svg')} 
               alt="GDEVELOPERS Logo" 
               className="h-12 w-auto"
+              width={48}
+              height={48}
             />
             <p className="text-center text-gray-600 dark:text-gray-400">
               © {new Date().getFullYear()} GDEVELOPERS. All rights reserved.

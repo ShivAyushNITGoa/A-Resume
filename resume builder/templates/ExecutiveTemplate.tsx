@@ -40,11 +40,11 @@ const ExecutiveTemplate: React.FC<ExecutiveTemplateProps> = ({ data }) => {
       )}
       
       {/* Core Competencies / Skills */}
-      {skills && skills.length > 0 && (
+      {skills && (
         <div className="mb-6">
           <h2 className="text-xl font-bold text-gray-800 uppercase mb-2 tracking-wider">Core Competencies</h2>
           <div className="grid grid-cols-2 gap-2">
-            {skills.map((skill, index) => (
+            {skills.hard.map((skill, index) => (
               <div key={index} className="flex items-center">
                 <div className="w-2 h-2 bg-gray-700 mr-2"></div>
                 <span className="text-sm text-gray-700">{skill}</span>

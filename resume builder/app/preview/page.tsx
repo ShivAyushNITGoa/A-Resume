@@ -3,11 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useReactToPrint } from 'react-to-print';
 import { templates } from '@/templates';
 import { ResumeData } from '@/utils/types';
 import ThemeToggle from '@/components/theme-toggle';
 import ResumeTemplateRenderer from '@/components/ResumeTemplateRenderer';
+import { getAssetPath } from '@/utils/helpers';
 
 export default function Preview() {
   const router = useRouter();
@@ -137,10 +139,12 @@ export default function Preview() {
       <header className="border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-3">
-            <img 
-              src="/images/logo.svg" 
+            <Image 
+              src={getAssetPath('images/logo.svg')} 
               alt="GDEVELOPERS Logo" 
               className="h-10 w-auto"
+              width={40}
+              height={40}
             />
             <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
               Resume Builder
@@ -249,34 +253,30 @@ export default function Preview() {
             <div className="flex justify-center space-x-4">
               <button
                 onClick={handleEdit}
-                className="flex items-center border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-colors"
+                className="px-6 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                </svg>
                 Edit Resume
               </button>
               <button
                 onClick={handleDownloadPDF}
-                className="flex items-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg transition-colors"
+                className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-                Download as PDF
+                Download PDF
               </button>
             </div>
           </div>
         </div>
       </main>
 
-      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6">
+      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-3">
-            <img 
-              src="/images/logo.svg" 
+            <Image 
+              src={getAssetPath('images/logo.svg')} 
               alt="GDEVELOPERS Logo" 
               className="h-12 w-auto"
+              width={48}
+              height={48}
             />
             <p className="text-center text-gray-600 dark:text-gray-400">
               © {new Date().getFullYear()} GDEVELOPERS. All rights reserved.

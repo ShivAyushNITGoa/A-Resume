@@ -1,10 +1,13 @@
 {
+  "homepage" : "https://ShivAyushNITGoa.github.io/resume/",
   "name": "resume-builder-root",
   "version": "1.0.0",
   "private": true,
   "description": "Resume builder application - root project",
   "scripts": {
     "dev": "cd \"resume builder\" && npm run dev",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "build": "cd \"resume builder\" && npm run build",
     "start": "cd \"resume builder\" && npm run start"
   },

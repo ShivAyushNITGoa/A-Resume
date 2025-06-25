@@ -51,6 +51,11 @@ export interface Certification {
   date: string;
 }
 
+export interface Achievement {
+  date: string;
+  description: string;
+}
+
 export interface Skills {
   hard: string[];
   soft: string[];
@@ -60,9 +65,10 @@ export interface ResumeData {
   personalInfo: PersonalInfo;
   education: Education[];
   experience: Experience[];
-  skills: string[] | Skills;
+  skills: Skills;
   projects: Project[];
   certifications: Certification[];
+  achievements: Achievement[];
 }
 
 export interface TemplateOption {

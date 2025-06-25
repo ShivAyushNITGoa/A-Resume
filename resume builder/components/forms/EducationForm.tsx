@@ -1,10 +1,10 @@
 "use client";
 
-import { ResumeData } from '@/utils/types';
+import { ResumeData, Education } from '@/utils/types';
 
 interface EducationFormProps {
-  data: ResumeData['education'];
-  updateData: (data: ResumeData['education']) => void;
+  data: Education[];
+  updateData: (data: Education[]) => void;
 }
 
 const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
@@ -13,9 +13,15 @@ const EducationForm: React.FC<EducationFormProps> = ({ data, updateData }) => {
       ...data,
       {
         school: '',
+        institution: '',
         degree: '',
         fieldOfStudy: '',
+        location: '',
         graduationYear: '',
+        startDate: '',
+        endDate: '',
+        current: false,
+        description: '',
       },
     ]);
   };

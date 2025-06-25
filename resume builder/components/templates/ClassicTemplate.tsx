@@ -1,67 +1,30 @@
 import React from 'react';
-
-// Define the data structure (make sure it matches the adapted data format)
-interface ResumeData {
-  personalInfo: {
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    linkedin: string;
-    website: string;
-  };
-  summary: string;
-  workExperience: {
-    jobTitle: string;
-    company: string;
-    location: string;
-    startDate: string;
-    endDate: string;
-    description: string[];
-  }[];
-  education: {
-    degree: string;
-    institution: string;
-    location: string;
-    gradDate: string;
-    gpa: string;
-  }[];
-  skills: string[];
-  projects: {
-    name: string;
-    description: string;
-    technologies: string[];
-    link: string;
-  }[];
-  certifications: {
-    name: string;
-    issuer: string;
-    date: string;
-  }[];
-}
+import { ResumeData, Skills } from '@/utils/types';
 
 interface ClassicTemplateProps {
-  resumeData: ResumeData;
-  backgroundColor?: string;
+  data: ResumeData;
+  color?: string;
 }
 
-const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroundColor = '#333333' }) => {
-  const {
+const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ 
+  data, 
+  color = '#333333' 
+}) => {
+  const { 
     personalInfo,
-    summary,
-    workExperience,
     education,
+    experience,
     skills,
     projects,
     certifications
-  } = resumeData;
+  } = data;
 
   return (
     <div className="w-full max-w-[800px] mx-auto bg-white shadow-lg font-serif">
       {/* Header */}
       <header 
         className="px-8 py-6 text-white"
-        style={{ backgroundColor }}
+        style={{ backgroundColor: color }}
       >
         <h1 className="text-3xl font-bold text-center mb-2">{personalInfo.name}</h1>
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm">
@@ -81,13 +44,13 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
               {personalInfo.phone}
             </div>
           )}
-          {personalInfo.address && (
+          {personalInfo.location && (
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              {personalInfo.address}
+              {personalInfo.location}
             </div>
           )}
           {personalInfo.linkedin && (
@@ -111,35 +74,35 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
 
       <div className="p-8">
         {/* Summary Section */}
-        {summary && (
+        {personalInfo.summary && (
           <section className="mb-6">
-            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: backgroundColor }}>
+            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: color }}>
               Professional Summary
             </h2>
-            <p className="text-gray-700">{summary}</p>
+            <p className="text-gray-700">{personalInfo.summary}</p>
           </section>
         )}
 
         {/* Experience Section */}
-        {workExperience && workExperience.length > 0 && (
+        {experience && experience.length > 0 && (
           <section className="mb-6">
-            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: backgroundColor }}>
+            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: color }}>
               Work Experience
             </h2>
             <div className="space-y-4">
-              {workExperience.map((exp, index) => (
+              {experience.map((exp, index) => (
                 <div key={index}>
                   <div className="flex justify-between items-start mb-1">
                     <div>
-                      <h3 className="font-bold">{exp.jobTitle}</h3>
+                      <h3 className="font-bold">{exp.position}</h3>
                       <h4 className="text-gray-700">{exp.company}{exp.location && `, ${exp.location}`}</h4>
                     </div>
                     <div className="text-sm text-gray-600 whitespace-nowrap">
-                      {exp.startDate && `${exp.startDate} - ${exp.endDate || 'Present'}`}
+                      {exp.startDate && `${exp.startDate} - ${exp.current ? 'Present' : exp.endDate}`}
                     </div>
                   </div>
                   <ul className="list-disc ml-5 text-gray-700">
-                    {exp.description.map((item, i) => (
+                    {exp.responsibilities.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
                   </ul>
@@ -152,7 +115,7 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
         {/* Education Section */}
         {education && education.length > 0 && (
           <section className="mb-6">
-            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: backgroundColor }}>
+            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: color }}>
               Education
             </h2>
             <div className="space-y-4">
@@ -164,10 +127,10 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
                       <h4 className="text-gray-700">{edu.institution}{edu.location && `, ${edu.location}`}</h4>
                     </div>
                     <div className="text-sm text-gray-600 whitespace-nowrap">
-                      {edu.gradDate}
+                      {edu.graduationYear}
                     </div>
                   </div>
-                  {edu.gpa && <p className="text-gray-700 mt-1">GPA: {edu.gpa}</p>}
+                  {edu.fieldOfStudy && <p className="text-gray-700 mt-1">{edu.fieldOfStudy}</p>}
                 </div>
               ))}
             </div>
@@ -175,17 +138,26 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
         )}
 
         {/* Skills Section */}
-        {skills && skills.length > 0 && (
+        {skills && (
           <section className="mb-6">
-            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: backgroundColor }}>
+            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: color }}>
               Skills
             </h2>
             <div className="flex flex-wrap gap-2">
-              {skills.map((skill, index) => (
+              {skills.hard.map((skill, index) => (
                 <span 
-                  key={index}
+                  key={`hard-${index}`}
                   className="px-3 py-1 rounded text-sm"
-                  style={{ backgroundColor: `${backgroundColor}20` }}
+                  style={{ backgroundColor: `${color}20` }}
+                >
+                  {skill}
+                </span>
+              ))}
+              {skills.soft.map((skill, index) => (
+                <span 
+                  key={`soft-${index}`}
+                  className="px-3 py-1 rounded text-sm"
+                  style={{ backgroundColor: `${color}20` }}
                 >
                   {skill}
                 </span>
@@ -197,14 +169,14 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
         {/* Projects Section */}
         {projects && projects.length > 0 && (
           <section className="mb-6">
-            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: backgroundColor }}>
+            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: color }}>
               Projects
             </h2>
             <div className="space-y-4">
               {projects.map((project, index) => (
                 <div key={index}>
                   <div className="flex justify-between items-start mb-1">
-                    <h3 className="font-bold">{project.name}</h3>
+                    <h3 className="font-bold">{project.title}</h3>
                     {project.link && (
                       <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm">
                         View Project
@@ -212,11 +184,6 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
                     )}
                   </div>
                   <p className="text-gray-700">{project.description}</p>
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="mt-1 text-sm text-gray-600">
-                      <span className="font-medium">Technologies:</span> {project.technologies.join(', ')}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -226,7 +193,7 @@ const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ resumeData, backgroun
         {/* Certifications Section */}
         {certifications && certifications.length > 0 && (
           <section>
-            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: backgroundColor }}>
+            <h2 className="text-lg font-bold uppercase mb-3 pb-1 border-b-2" style={{ borderColor: color }}>
               Certifications
             </h2>
             <div className="space-y-2">

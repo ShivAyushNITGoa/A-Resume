@@ -1,0 +1,24 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="250" fill="#f0f0f0"/>
+  
+  <!-- Header area -->
+  <rect x="20" y="20" width="360" height="50" fill="#e0e0e0"/>
+  <text x="200" y="50" font-family="Arial" font-size="16" text-anchor="middle" fill="#505050">Classic Template</text>
+  <line x1="150" y1="60" x2="250" y2="60" stroke="#505050" stroke-width="2"/>
+  
+  <!-- Contact info -->
+  <rect x="50" y="75" width="300" height="10" fill="#d0d0d0"/>
+  
+  <!-- Professional Summary -->
+  <rect x="20" y="95" width="360" height="30" fill="#e0e0e0"/>
+  
+  <!-- Work Experience -->
+  <rect x="20" y="135" width="360" height="50" fill="#e0e0e0"/>
+  
+  <!-- Education -->
+  <rect x="20" y="195" width="170" height="40" fill="#e0e0e0"/>
+  
+  <!-- Skills -->
+  <rect x="200" y="195" width="180" height="40" fill="#e0e0e0"/>
+</svg> 

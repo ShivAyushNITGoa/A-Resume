@@ -113,12 +113,17 @@ const AcademicTemplate: React.FC<AcademicTemplateProps> = ({ data }) => {
       )}
       
       {/* Skills and Research Methods */}
-      {skills && skills.length > 0 && (
+      {skills && (
         <div className="mb-6">
           <h2 className="text-xl font-bold text-gray-800 uppercase mb-2">Skills & Research Methods</h2>
           <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-            {skills.map((skill, index) => (
-              <div key={index} className="text-sm text-gray-700">
+            {skills.hard.map((skill, index) => (
+              <div key={`hard-${index}`} className="text-sm text-gray-700">
+                • {skill}
+              </div>
+            ))}
+            {skills.soft.map((skill, index) => (
+              <div key={`soft-${index}`} className="text-sm text-gray-700">
                 • {skill}
               </div>
             ))}

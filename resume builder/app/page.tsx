@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "@/components/theme-toggle";
 import Image from "next/image";
+import { getAssetPath } from "@/utils/helpers";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             <div className="flex justify-center">
               <Image 
-                src="/images/campus_logo.svg"
+                src={getAssetPath('images/campus_logo.svg')}
                 alt="GDEVELOPERS Logo"
                 className="h-12 w-auto"
                 style={{ filter: 'drop-shadow(0 0 0.5rem rgba(0,0,0,0.1))' }}
@@ -68,7 +69,7 @@ export default function Home() {
                   <div className="text-center p-8">
                     <div className="w-full flex justify-center mt-12">
                       <Image 
-                        src="/images/campus_logo.svg"
+                        src={getAssetPath('images/campus_logo.svg')}
                         alt="GDEVELOPERS Logo"
                         className="h-20 w-auto mx-auto mb-6"
                         width={150}
@@ -140,7 +141,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4">
             <div className="flex items-center justify-center space-x-2 mt-8">
               <Image 
-                src="/images/campus_logo.svg"
+                src={getAssetPath('images/campus_logo.svg')}
                 alt="GDEVELOPERS Logo"
                 className="h-16 w-auto"
                 width={80}

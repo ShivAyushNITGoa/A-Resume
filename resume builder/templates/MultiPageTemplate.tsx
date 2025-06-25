@@ -87,13 +87,13 @@ const MultiPageTemplate: React.FC<MultiPageTemplateProps> = ({ data }) => {
         </div>
 
         {/* Skills */}
-        {skills && skills.length > 0 && (
+        {skills && (
           <div className="mb-8">
             <h2 className="text-xl font-bold text-gray-800 mb-2 border-b border-gray-300 pb-1">
               SKILLS & EXPERTISE
             </h2>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              {skills.map((skill, index) => (
+              {skills.hard.map((skill, index) => (
                 <div key={index} className="flex items-center">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mr-2"></div>
                   <span className="text-sm text-gray-700">{skill}</span>
