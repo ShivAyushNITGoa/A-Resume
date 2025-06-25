@@ -16,5 +16,8 @@
   ],
   "dependencies": {
     "next": "^14.0.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
-} 
+}
